@@ -96,7 +96,7 @@ class UserViewSet(viewsets.ModelViewSet):
         if request.method == 'GET':
             serializer = UserSerializer(user, many=False)
             return Response(serializer.data)
-        if request.method == 'PATCH':
+        elif request.method == 'PATCH':
             serializer = UserSerializer(user, partial=True, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -104,6 +104,10 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response(
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
+        serializer = UserSerializer(user)
+        return Response(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
@@ -119,8 +123,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
         """Получаем набор отзывов относящихся к определенному произведению"""
         title_id = self.kwargs.get('title_id')
         title = get_object_or_404(Title, id=title_id)
-        queryset = title.reviews.all()
-        return queryset
+        return title.reviews.all()
 
     def perform_create(self, serializer):
         """При создании нового отзыва, автор = пользователь создающий отзыв"""
@@ -141,8 +144,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         """Получаем набор комментов относящихся к определенному отзыву"""
         review_id = self.kwargs.get('review_id')
         review = get_object_or_404(Review, id=review_id)
-        queryset = review.comments.all()
-        return queryset
+        return review.comments.all()
 
     def perform_create(self, serializer):
         """При создании нового коммента,
