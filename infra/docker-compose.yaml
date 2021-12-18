@@ -7,7 +7,7 @@ services:
   # описание контейнера db
   db:
     # образ, из которого должен быть запущен контейнер
-    image: postgres:13.0-alpine
+    image: postgres:latest
     # volume и связанная с ним директория в контейнере
     volumes:
       - /var/lib/postgresql/data/
@@ -15,7 +15,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: ../api_yamdb/
+    image: klokly/yamdb_final/
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 

@@ -95,7 +95,6 @@ fixtures.json - это дамп с начальными данными
 ```sh 
 python manage.py loaddata fixtures.json
 ```
-![workwlof point](https://github.com/klokly/
-yamdb_final/.github/.workflow/yamdb_workflow.yml/badge.svg)
+![workwlof point](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 **Приятного использования**
