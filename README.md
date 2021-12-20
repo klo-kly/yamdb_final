@@ -97,4 +97,5 @@ python manage.py loaddata fixtures.json
 ```
 ![workwlof point](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
+Приложение развернуто на боевом сервере: http://51.250.30.245/admin/
 **Приятного использования**
