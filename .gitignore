@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__p`cache__/
 *.py[cod]
 *$py.class
 
@@ -145,8 +145,4 @@ dmypy.json
 
 .mypy_cache
 
-# папки со статикой и медиа
-static/
-posts/static/
-media/
 
