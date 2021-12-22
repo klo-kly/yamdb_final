@@ -5,11 +5,11 @@ services:
   db:
     image: postgres:latest
     volumes:
-      - /var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
-    image: klokly/yamdb_final/
+    image: klokly/yamdb_final
     restart: always
     volumes:
       - static_value:/app/static/
@@ -28,13 +28,14 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
 
-      - static_value:/var/html/static/
+      - static_value:/app/static/
 
-      - media_value:/var/html/media/
+      - media_value:/app/media/
 
     depends_on:
       - web
 
 volumes:
+  postgres_data:
   static_value:
   media_value:
